@@ -73,7 +73,10 @@ namespace DaggerfallConnect.Arena2
         /// <summary>
         /// Gets managed BSA file.
         /// </summary>
-        internal BsaFile BsaFile => bsaFile;
+        internal BsaFile BsaFile
+        {
+            get { return bsaFile; }
+        }
 
         #endregion
 
@@ -93,7 +96,9 @@ namespace DaggerfallConnect.Arena2
         /// <param name="usage">Determines if the BSA file will read from disk or memory.</param>
         /// <param name="readOnly">File will be read-only if true, read-write if false.</param>
         public BlocksFile(string filePath, FileUsage usage, bool readOnly)
-            => Load(filePath, usage, readOnly);
+        {
+            Load(filePath, usage, readOnly);
+        }
 
         #endregion
 
@@ -115,7 +120,10 @@ namespace DaggerfallConnect.Arena2
         /// <summary>
         /// Number of BSA records in BLOCKS.BSA.
         /// </summary>
-        public int Count => bsaFile.Count;
+        public int Count
+        {
+            get { return bsaFile.Count; }
+        }
 
         #endregion
 
@@ -124,33 +132,51 @@ namespace DaggerfallConnect.Arena2
         /// <summary>
         /// Gets default BLOCKS.BSA filename.
         /// </summary>
-        static public string Filename => "BLOCKS.BSA";
+        static public string Filename
+        {
+            get { return "BLOCKS.BSA"; }
+        }
 
         /// <summary>
         /// Gets rotation divisor used when rotating
         ///  block records and models into place.
         /// </summary>
-        static public float RotationDivisor => 5.68888888888889f;
+        static public float RotationDivisor
+        {
+            get { return 5.68888888888889f; }
+        }
 
         /// <summary>
         /// Gets dimension of a single RMB block.
         /// </summary>
-        static public float RMBDimension => 4096f;
+        static public float RMBDimension
+        {
+            get { return 4096f; }
+        }
 
         /// <summary>
         /// Gets dimension of a single RMB ground tile.
         /// </summary>
-        static public float TileDimension => 256f;
+        static public float TileDimension
+        {
+            get { return 256f; }
+        }
 
         /// <summary>
         /// Gets dimension of a single RDB block.
         /// </summary>
-        static public float RDBDimension => 2048f;
+        static public float RDBDimension
+        {
+            get { return 2048f; }
+        }
 
         /// <summary>
         /// Gets scale divisor for billboards.
         /// </summary>
-        static public float ScaleDivisor => 256f;
+        static public float ScaleDivisor
+        {
+            get { return 256f; }
+        }
 
         #endregion
 
@@ -218,7 +244,9 @@ namespace DaggerfallConnect.Arena2
         /// <param name="block">Index of block.</param>
         /// <returns>Name of the block.</returns>
         public string GetBlockName(int block)
-            => WorldDataReplacement.GetNewDFBlockName(block) ?? bsaFile.GetRecordName(block);
+        {
+            return WorldDataReplacement.GetNewDFBlockName(block) ?? bsaFile.GetRecordName(block);
+        }
 
         /// <summary>
         /// Gets the type of specified block. Does not change the currently loaded block.

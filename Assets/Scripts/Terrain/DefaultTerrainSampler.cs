@@ -32,7 +32,10 @@ namespace DaggerfallWorkshop
         // Max terrain height of this sampler implementation
         const float maxTerrainHeight = 1539f;
 
-        public override int Version => 1;
+        public override int Version
+        {
+            get { return 1; }
+        }
 
         #region Profiler Markers
 
