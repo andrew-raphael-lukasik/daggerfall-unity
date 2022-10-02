@@ -870,12 +870,13 @@ namespace DaggerfallWorkshop
         }
 
         /// <summary> Pushes mesh data from buffers to the GPU </summary>
-        public void PushNewMeshData()
+        private void PushNewMeshData()
         {
             ___PushNewMeshData.Begin();
 
             ___complete.Begin();
             Dependency.Complete();
+            UvAnimationDependency.Complete();
             ___complete.End();
 
             // Assign mesh data
@@ -904,7 +905,7 @@ namespace DaggerfallWorkshop
             ___PushNewMeshData.End();
         }
 
-        void PushUVData()
+        private void PushUVData()
         {
             ___PushUVData.Begin();
 
