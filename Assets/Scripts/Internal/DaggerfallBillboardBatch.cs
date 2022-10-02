@@ -42,13 +42,13 @@ namespace DaggerfallWorkshop
         [SerializeField, HideInInspector]
         Mesh billboardMesh;
 
-        NativeList<BillboardItem> billboardData;
-        NativeArray<float3> meshVertices;
-        NativeArray<float3> meshNormals;
-        NativeArray<ushort> meshIndices;
-        NativeArray<float4> meshTangents;
-        NativeArray<float2> meshUVs;
-        NativeArray<Bounds> meshAABB;
+        NativeList<BillboardItem> billboardData = new NativeList<BillboardItem>(initialCapacity: maxBillboardCount, Allocator.Persistent);
+        NativeArray<float3> meshVertices = new NativeArray<float3>(0, Allocator.Persistent);
+        NativeArray<float3> meshNormals = new NativeArray<float3>(0, Allocator.Persistent);
+        NativeArray<ushort> meshIndices = new NativeArray<ushort>(0, Allocator.Persistent);
+        NativeArray<float4> meshTangents = new NativeArray<float4>(0, Allocator.Persistent);
+        NativeArray<float2> meshUVs = new NativeArray<float2>(0, Allocator.Persistent);
+        NativeArray<Bounds> meshAABB = new NativeArray<Bounds>(1, Allocator.Persistent);
         JobHandle Dependency;
         JobHandle UvAnimationDependency;
 
@@ -130,17 +130,6 @@ namespace DaggerfallWorkshop
             ___PushUVData = new ProfilerMarker($"{nameof(DaggerfallBillboardBatch)}.{nameof(PushUVData)}");
 
         #endregion
-
-        void Awake()
-        {
-            billboardData = new NativeList<BillboardItem>(initialCapacity: maxBillboardCount, Allocator.Persistent);
-            meshVertices = new NativeArray<float3>(0, Allocator.Persistent);
-            meshNormals = new NativeArray<float3>(0, Allocator.Persistent);
-            meshIndices = new NativeArray<ushort>(0, Allocator.Persistent);
-            meshTangents = new NativeArray<float4>(0, Allocator.Persistent);
-            meshUVs = new NativeArray<float2>(0, Allocator.Persistent);
-            meshAABB = new NativeArray<Bounds>(1, Allocator.Persistent);
-        }
 
         void OnDestroy()
         {
